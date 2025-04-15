@@ -1,4 +1,4 @@
-import { Avatar, Button, Card } from "@chakra-ui/react" 
+import { Avatar, Button, Card, Flex } from "@chakra-ui/react" 
 
 // List Products
 const products = [
@@ -15,7 +15,7 @@ const products = [
     name: "Product 2",
     category: "Category 1",
     price: 100,
-    description: "Description of Product 1",
+    description: "Description of Product 2",
     image: "https://picsum.photos/200/300",
   },
 ]
@@ -26,7 +26,8 @@ function ProductPage() {
     <>
       <h1>Product Page</h1>
       <p>This is the product page.</p>
-      <p>List of Products</p>
+      <p>List of Products</p> 
+      <Flex> 
       {products.map((product) => (
         <>
           <Card.Root key={product.id} width="320px" >
@@ -35,18 +36,22 @@ function ProductPage() {
                 <Avatar.Image src={product.image} />
                 <Avatar.Fallback name={product.name} />
               </Avatar.Root>
-              <Card.Title mb="2">{product.name}</Card.Title>
+              <Card.Title mb="2">{product.name }</Card.Title>
               <Card.Description>
-                {product.description}
+                <strong>Category: {product.category}</strong>
+                <br />
+                <strong>Price: Rp. {product.price}</strong>
+                <br />
+                <strong>Description: {product.description}</strong>
               </Card.Description>
             </Card.Body>
             <Card.Footer justifyContent="flex-end">
-              <Button variant="outline">View</Button>
-              <Button>Join</Button>
+              <Button variant="outline">Add to Cart</Button>
             </Card.Footer>
           </Card.Root>
-</> 
+        </> 
       ))}
+      </Flex>
     </>
   )
 }
